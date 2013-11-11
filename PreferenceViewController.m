@@ -44,10 +44,20 @@
     unitAlert = [[UIAlertView alloc] initWithTitle:@"Unit Choice Saved" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)doOnConnectionLost {
+    [self.bleStatusIcon showDisconnected];
+    [self.delegate showConnectionLostDialog];
+
 }
 
 // Temp btns
@@ -106,5 +116,6 @@
     }
     [unitAlert show];
 }
+
 
 @end

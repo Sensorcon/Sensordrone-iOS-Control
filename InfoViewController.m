@@ -57,10 +57,19 @@
     
     generalInfo = [generalInfo stringByAppendingString:@"Different units can be selected on the \"Settings\" tab"];
     [infoView setText:generalInfo];
-    
+    [infoView setEditable:NO];
     
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+-(void)doOnConnectionLost {
+    [self.bleStatusIcon showDisconnected];
+    [self.delegate showConnectionLostDialog];
+
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

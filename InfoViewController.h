@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface InfoViewController : UIViewController
+@interface InfoViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UITextView *infoView;
 
 @end

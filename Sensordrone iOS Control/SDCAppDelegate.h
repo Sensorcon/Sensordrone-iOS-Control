@@ -14,6 +14,8 @@
 
 
 @property (strong, nonatomic) UIWindow *window;
-@property Drone *aDrone;
+@property Drone *myDrone;
+
+-(void)showConnectionLostDialog;
 
 @end

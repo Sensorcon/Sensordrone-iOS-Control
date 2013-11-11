@@ -10,11 +10,11 @@
 
 @implementation SDCAppDelegate
 
-@synthesize aDrone;
+@synthesize myDrone;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
-    self.aDrone = [[Drone alloc] initWithDelegate:self];
+    self.myDrone = [[Drone alloc] initWithDelegate:self];
     // Override point for customization after application launch.
     return YES;
 }
@@ -32,11 +32,11 @@
     //
     
     // If a user puts the application in the background, disconnect the device.
-    if ([aDrone.dronePeripheral isConnected]) {
-        [aDrone.btleManger cancelPeripheralConnection:aDrone.dronePeripheral];
+    if ([myDrone.dronePeripheral isConnected]) {
+        [myDrone.btleManger cancelPeripheralConnection:myDrone.dronePeripheral];
     }
     // Clear the NSOperationQueue of any jobs taht didn't get processed.
-    [aDrone clearJobQueue];
+    [myDrone clearJobQueue];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -44,8 +44,8 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     
     // Clear the NSOperationQueue of any jobs taht didn't get processed.
-    [aDrone clearJobQueue];
-    [aDrone clearJobQueue];
+    [myDrone clearJobQueue];
+    [myDrone clearJobQueue];
 
 }
 
@@ -57,6 +57,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void)showConnectionLostDialog {
+    [[[UIAlertView alloc] initWithTitle:@"Connection lost!" message:@"It seems the connection was lost. Please reconnect from the connections page" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
 }
 
 @end

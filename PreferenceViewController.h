@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface PreferenceViewController : UIViewController
+@interface PreferenceViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UIButton *btnTempF;
 @property (weak, nonatomic) IBOutlet UIButton *btnTempC;
 @property (weak, nonatomic) IBOutlet UIButton *btnTempK;

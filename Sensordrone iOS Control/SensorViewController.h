@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SensordroneiOSLibrary.h"
-#import "SDCAppDelegate.h"
+#import "BaseViewController.h"
 
-@interface SensorViewController : UIViewController <DroneEventDelegate, UITabBarControllerDelegate>
+@interface SensorViewController : BaseViewController
 
 // Switches
 @property (weak, nonatomic) IBOutlet UISwitch *tempSwitch;
@@ -24,7 +24,6 @@
 @property (weak, nonatomic) IBOutlet UISwitch *altitudeSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *batterySwitch;
 
-@property (weak, nonatomic) IBOutlet UIImageView *worldPicture;
 
 
 // Display Fields
@@ -39,8 +38,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *altitudeDisplay;
 @property (weak, nonatomic) IBOutlet UILabel *batteryVoltageDisplay;
 
-
-@property SDCAppDelegate *delegate;
 
 @property NSInteger tempUnitKey;
 @property NSInteger pressureUnitKey;
@@ -57,6 +54,7 @@
 @property NSTimer *altRepeater;
 @property NSTimer *batteryVoltageRepeater;
 @property NSTimer *irRepeater;
+@property NSMutableArray *toggleArray;
 
 -(IBAction)ambientTemperatureToggled:(id)sender;
 -(IBAction)humidityToggled:(id)sender;
@@ -70,5 +68,7 @@
 -(IBAction)batteryVoltageToggled:(id)sender;
 
 -(void) tapDetected:(id)sender;
+-(void)toggleAllOff;
+-(void)reToggle;
 
 @end
