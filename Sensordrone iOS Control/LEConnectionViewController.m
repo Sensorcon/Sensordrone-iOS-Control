@@ -128,11 +128,13 @@
     NSString *connectString = @"Connected: ";
     connectString = [connectString stringByAppendingString:droneName];
     [self.bleStatusIcon showConnected];
+    [[[UIAlertView alloc] initWithTitle:@"Connected" message:@"You have successfully connected!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
 
 }
 
 -(void) doOnDisconnect {
     [self.bleStatusIcon showDisconnected];
+    [[[UIAlertView alloc] initWithTitle:@"Disconnected" message:@"You have successfully disconnected" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
 }
 
 -(void) doOnConnectionLost {
@@ -142,6 +144,7 @@
 }
 
 -(void) doOnConnectionFailed {
+    [[[UIAlertView alloc] initWithTitle:@"Connection Failed!" message:@"Connection was not successful. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
 }
 
 @end
